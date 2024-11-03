@@ -17,7 +17,7 @@
       <collision name="collision">
         <geometry>
           <mesh>
-            <uri>model://CoffeeTable/meshes/CoffeeTable.obj</uri>
+            <uri>model://coffee/meshes/CoffeeTable.obj</uri>
             <scale>0.02 0.02 0.02</scale> <!-- Increase scale -->
           </mesh>
         </geometry>

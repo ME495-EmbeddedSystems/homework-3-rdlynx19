@@ -1,0 +1,38 @@
+<robot name="buttercup" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<gazebo reference="base_link">
+     <inertial>
+        <mass value="1.14395"/>
+        <inertia ixx="0.095329" iyy="0.381317" izz="0.476646"/>
+    </inertial>
+
+</gazebo>
+<gazebo reference="left_wheel">
+<inertial>
+        <mass value="1"/>
+        <inertia ixx="0.043333" iyy="0.043333" izz="0.08"/>
+    </inertial>
+</gazebo>
+
+<gazebo reference="right_wheel">
+ <inertial>
+        <mass value="1"/>
+        <inertia ixx="0.043333" iyy="0.043333" izz="0.08"/>
+    </inertial>
+</gazebo>
+
+<gazebo reference="top_caster">
+ <inertial>
+        <mass value="1"/>
+        <inertia ixx="0.016" iyy="0.016" izz="0.016"/>
+    </inertial>
+</gazebo>
+
+<gazebo reference="bottom_caster">
+<inertial>
+    <mass value="1"/>
+        <inertia ixx="0.016" iyy="0.016" izz="0.016"/>
+    </inertial>
+</gazebo>
+
+</robot>

@@ -1,9 +1,16 @@
 <robot name="buttercup" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<xacro:include filename="$(find diff_drive)/ddrive.gazebo.xacro"/>
+<xacro:property name="params_yaml" value="$(find diff_drive)/robot_params.yaml"/>
+<xacro:property name="yaml_dict" value="${xacro.load_yaml(params_yaml)}"/>
+<xacro:property name="chassis_core" value="${yaml_dict['robot_params']['chassis_core']}"/>
+<xacro:property name="wheel_radius" value="${yaml_dict['robot_params']['wheel_radius']}"/>
+<xacro:property name="caster_radius" value="${yaml_dict['robot_params']['caster_radius']}"/>
+
 
 <link name="base_link">
     <visual>
         <geometry>
-            <box size="1.5 1.0 0.25"/>   
+            <box size="${chassis_core*2} ${chassis_core} ${chassis_core*0.5}"/>   
         </geometry>
         <material name="red_mat">
             <color rgba="1.0 0.0 0.0 1.0"/>    
@@ -11,18 +18,19 @@
     </visual>
     <collision>
        <geometry>
-            <box size="2.0 1.0 0.5"/>   
+            <box size="${chassis_core*1.5} ${chassis_core} ${chassis_core*0.25}"/>   
         </geometry>
         <material name="red_mat">
             <color rgba="1.0 0.0 0.0 1.0"/>    
         </material> 
     </collision>
+   
 </link>   
 
 <link name="bottom_caster">
     <visual>
         <geometry>
-            <sphere radius="0.2"/>
+            <sphere radius="${caster_radius}"/>
         </geometry>
         <material name="green_mat">
             <color rgba="0 0 1 1"/>
@@ -30,18 +38,19 @@
     </visual>
     <collision>
         <geometry>
-            <sphere radius="0.2"/>
+            <sphere radius="${caster_radius}"/>
         </geometry>
         <material name="green_mat">
             <color rgba="0 0 1 1"/>
         </material>
     </collision>
+    
 </link>
 
 <link name="top_caster">
     <visual>
         <geometry>
-            <sphere radius="0.2"/>
+            <sphere radius="${caster_radius}"/>
         </geometry>
         <material name="green_mat">
             <color rgba="0 0 1 1"/>
@@ -49,18 +58,19 @@
     </visual>
     <collision>
         <geometry>
-            <sphere radius="0.2"/>
+            <sphere radius="${caster_radius}"/>
         </geometry>
         <material name="green_mat">
             <color rgba="0 0 1 1"/>
         </material>
     </collision>
+   
 </link>
 
 <link name="left_wheel">
     <visual>
         <geometry>
-            <cylinder radius="0.3" length="0.2"/>
+            <cylinder radius="${wheel_radius}" length="0.2"/>
         </geometry>
         <material name="blue_mat">
             <color rgba="0.0 1.0 0.0 1.0"/>
@@ -68,18 +78,19 @@
     </visual>
     <collision>
         <geometry>
-            <cylinder radius="0.3" length="0.2"/>
+            <cylinder radius="${wheel_radius}" length="0.2"/>
         </geometry>
         <material name="blue_mat">
             <color rgba="0.0 1.0 0.0 1.0"/>
         </material>
     </collision>
+    
 </link>
 
 <link name="right_wheel">
     <visual>
         <geometry>
-            <cylinder radius="0.3" length="0.2"/>
+            <cylinder radius="${wheel_radius}" length="0.2"/>
         </geometry>
         <material name="blue_mat">
             <color rgba="0.0 1.0 0.0 1.0"/>
@@ -87,39 +98,40 @@
     </visual>
     <collision>
         <geometry>
-            <cylinder radius="0.3" length="0.2"/>
+            <cylinder radius="${wheel_radius}" length="0.2"/>
         </geometry>
         <material name="blue_mat">
             <color rgba="0.0 1.0 0.0 1.0"/>
         </material>
     </collision>
+   
 </link>
 
 
 
 <joint name="bottom_caster_wheel" type="continuous">
-    <origin xyz="0.5 0 -0.125" rpy="0 0 0"/>
+    <origin xyz="${chassis_core*2*0.4} 0 -${chassis_core*0.5*0.5}" rpy="0 0 0"/>
     <parent link="base_link"/>
     <child link="bottom_caster"/>
     <axis xyz="1 1 1"/>
 </joint>
 
 <joint name="top_caster_wheel" type="continuous">
-    <origin xyz="0.5 0 0.125" rpy="0 0 0"/>
+    <origin xyz="${chassis_core*2*0.4} 0 ${chassis_core*0.5*0.5}" rpy="0 0 0"/>
     <parent link="base_link"/>
     <child link="top_caster"/>
     <axis xyz="1 1 1"/>
 </joint>
 
 <joint name="left_wheel_base" type="continuous">
-    <origin xyz="-0.5 0.6 0" rpy="-1.57 0 0"/>
+    <origin xyz="-${chassis_core*0.5} 0.6 0" rpy="-1.57 0 0"/>
     <parent link="base_link"/>
     <child link="left_wheel"/>
     <axis xyz="0 0 1"/>
 </joint>
 
 <joint name="right_wheel_base" type="continuous">
-    <origin xyz="-0.5 -0.6 0" rpy="1.57 0 0"/>
+    <origin xyz="-${chassis_core*0.5} -0.6 0" rpy="1.57 0 0"/>
     <parent link="base_link"/>
     <child link="right_wheel"/>
     <axis xyz="0 0 1"/>

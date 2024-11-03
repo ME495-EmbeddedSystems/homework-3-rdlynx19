@@ -20,7 +20,16 @@ setup(
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
-        ('share/' + package_name, ['package.xml', 'launch/ddrive.launch.xml', 'launch/ddrive.launch.py', 'launch/ddrive_rviz.launch.py', 'launch/ddrive_rviz.launch.xml', 'urdf/ddrive.urdf.xacro']),
+        ('share/' + package_name, ['package.xml', 
+                                   'launch/ddrive.launch.xml', 
+                                   'launch/ddrive.launch.py', 
+                                   'launch/ddrive_rviz.launch.py', 
+                                   'launch/ddrive_rviz.launch.xml', 
+                                   'urdf/ddrive.urdf.xacro',
+                                   'urdf/ddrive.gazebo.xacro',
+                                   'urdf/ddrive.urdf',
+                                   'config/urdf_preview.rviz',
+                                   'config/robot_params.yaml']),
         ('share/' + package_name + '/env-hooks', ['env-hooks/diff_drive.dsv'])
         ] + recursive_files('share/' + package_name, "models")
         + recursive_files('share/' + package_name, "worlds"),

@@ -1,0 +1,4 @@
+robot_params:
+    chassis_core: 1.0
+    caster_radius: 0.2
+    wheel_radius: 0.4
