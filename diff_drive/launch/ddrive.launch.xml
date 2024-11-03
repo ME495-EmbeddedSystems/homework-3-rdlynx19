@@ -1,0 +1,6 @@
+<launch>
+    <arg name="world_file" default="empty.sdf"/>
+    <gz_server
+        world_sdf_file ="$(var world_file)">
+    </gz_server>
+</launch>
