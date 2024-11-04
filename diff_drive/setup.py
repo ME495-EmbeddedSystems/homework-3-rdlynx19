@@ -29,6 +29,7 @@ setup(
                                    'urdf/ddrive.gazebo.xacro',
                                    'urdf/ddrive.urdf',
                                    'config/urdf_preview.rviz',
+                                   'config/odom_urdf_preview.rviz',
                                    'config/robot_params.yaml']),
         ('share/' + package_name + '/env-hooks', ['env-hooks/diff_drive.dsv'])
         ] + recursive_files('share/' + package_name, "models")

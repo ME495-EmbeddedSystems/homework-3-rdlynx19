@@ -1,38 +1,17 @@
 <robot name="buttercup" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-<gazebo reference="base_link">
-     <inertial>
-        <mass value="1.14395"/>
-        <inertia ixx="0.095329" iyy="0.381317" izz="0.476646"/>
-    </inertial>
+<gazebo >
+    <plugin filename="libgz-sim-diff-drive-system.so" name="gz::sim::systems::DiffDrive">
+        <left_joint>left_wheel_base</left_joint>
+        <right_joint>right_wheel_base</right_joint>
+        <wheel_separation>1.2</wheel_separation>
+        <wheel_radius>0.4</wheel_radius>
+        <odom_publish_frequency>1</odom_publish_frequency>
+        <topic>cmd_vel</topic>
+    </plugin>
 
-</gazebo>
-<gazebo reference="left_wheel">
-<inertial>
-        <mass value="1"/>
-        <inertia ixx="0.043333" iyy="0.043333" izz="0.08"/>
-    </inertial>
-</gazebo>
-
-<gazebo reference="right_wheel">
- <inertial>
-        <mass value="1"/>
-        <inertia ixx="0.043333" iyy="0.043333" izz="0.08"/>
-    </inertial>
-</gazebo>
-
-<gazebo reference="top_caster">
- <inertial>
-        <mass value="1"/>
-        <inertia ixx="0.016" iyy="0.016" izz="0.016"/>
-    </inertial>
-</gazebo>
-
-<gazebo reference="bottom_caster">
-<inertial>
-    <mass value="1"/>
-        <inertia ixx="0.016" iyy="0.016" izz="0.016"/>
-    </inertial>
+    <plugin filename="libgz-sim-joint-state-publisher-system.so" name="gz::sim::systems::JointStatePublisher">
+    </plugin>
 </gazebo>
 
 </robot>
