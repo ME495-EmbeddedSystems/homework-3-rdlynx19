@@ -18,15 +18,15 @@
     </visual>
     <collision>
        <geometry>
-            <box size="${chassis_core*1.5} ${chassis_core} ${chassis_core*0.25}"/>   
+            <box size="${chassis_core*2} ${chassis_core} ${chassis_core*0.5}"/>   
         </geometry>
         <material name="red_mat">
             <color rgba="1.0 0.0 0.0 1.0"/>    
         </material> 
     </collision>
     <inertial>
-        <mass value="1.14395"/>
-        <inertia ixx="0.095329" iyy="0.381317" ixy="0.0" ixz="0.0" iyz="0.0" izz="0.476646"/>
+        <mass value="2.0"/>
+        <inertia ixx="1.0" iyy="1.0" ixy="0.0" ixz="0.0" iyz="0.0" izz="1.0"/>
     </inertial>
 </link>   
 
@@ -48,8 +48,8 @@
         </material>
     </collision>
     <inertial>
-        <mass value="1"/>
-        <inertia ixx="0.016" ixy="0.0" ixz="0.0" iyy="0.016" iyz="0.0" izz="0.016"/>
+        <mass value="2.0"/>
+        <inertia ixx="0.032" ixy="0.0" ixz="0.0" iyy="0.032" iyz="0.0" izz="0.032"/>
     </inertial>
 </link>
 
@@ -71,13 +71,14 @@
         </material>
     </collision>
     <inertial>
-        <mass value="1"/>
-        <inertia ixx="0.016" ixy="0.0" ixz="0.0" iyy="0.016" iyz="0.0" izz="0.016"/>
+        <mass value="2.0"/>
+        <inertia ixx="0.032" ixy="0.0" ixz="0.0" iyy="0.032" iyz="0.0" izz="0.032"/>
     </inertial>
 </link>
 
 <link name="left_wheel">
     <visual>
+        <origin xyz="0 0 0" rpy="1.57 0 0"/>
         <geometry>
             <cylinder radius="${wheel_radius}" length="0.2"/>
         </geometry>
@@ -86,6 +87,8 @@
         </material>
     </visual>
     <collision>
+        <origin xyz="0 0 0" rpy="1.57 0 0"/>
+
         <geometry>
             <cylinder radius="${wheel_radius}" length="0.2"/>
         </geometry>
@@ -94,13 +97,17 @@
         </material>
     </collision>
     <inertial>
-        <mass value="1"/>
-        <inertia ixx="0.043333" ixy="0.0" ixz="0.0" iyy="0.043333" iyz="0.0" izz="0.08"/>
+        <origin xyz="0 0 0" rpy="1.57 0 0"/>
+
+        <mass value="20.0"/>
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
     </inertial>
 </link>
 
 <link name="right_wheel">
     <visual>
+        <origin xyz="0 0 0" rpy="1.57 0 0"/>
+
         <geometry>
             <cylinder radius="${wheel_radius}" length="0.2"/>
         </geometry>
@@ -109,6 +116,8 @@
         </material>
     </visual>
     <collision>
+        <origin xyz="0 0 0" rpy="1.57 0 0"/>
+    
         <geometry>
             <cylinder radius="${wheel_radius}" length="0.2"/>
         </geometry>
@@ -117,39 +126,41 @@
         </material>
     </collision>
    <inertial>
-        <mass value="1"/>
-        <inertia ixx="0.043333" ixy="0.0" ixz="0.0" iyy="0.043333" iyz="0.0" izz="0.08"/>
+        <origin xyz="0 0 0" rpy="1.57 0 0"/>
+
+        <mass value="20.0"/>
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
     </inertial>
 </link>
 
 
 
-<joint name="bottom_caster_wheel" type="continuous">
-    <origin xyz="${chassis_core*2*0.4} 0 -${chassis_core*0.5*0.5}" rpy="0 0 0"/>
+<joint name="bottom_caster_wheel" type="fixed">
+    <origin xyz="-${chassis_core*2*0.4} 0 -${chassis_core*0.5*0.5}" rpy="0 0 0"/>
     <parent link="base_link"/>
     <child link="bottom_caster"/>
-    <axis xyz="1 1 1"/>
+    <!-- <axis xyz="1 1 1"/> -->
 </joint>
 
-<joint name="top_caster_wheel" type="continuous">
-    <origin xyz="${chassis_core*2*0.4} 0 ${chassis_core*0.5*0.5}" rpy="0 0 0"/>
+<joint name="top_caster_wheel" type="fixed">
+    <origin xyz="-${chassis_core*2*0.4} 0 ${chassis_core*0.5*0.5}" rpy="0 0 0"/>
     <parent link="base_link"/>
     <child link="top_caster"/>
-    <axis xyz="1 1 1"/>
+    <!-- <axis xyz="1 1 1"/> -->
 </joint>
 
 <joint name="left_wheel_base" type="continuous">
-    <origin xyz="-${chassis_core*0.5} 0.6 0" rpy="-1.57 0 0"/>
+    <origin xyz="${chassis_core*0.9} 0.6 0" rpy="0 0 0"/>
     <parent link="base_link"/>
     <child link="left_wheel"/>
-    <axis xyz="0 0 1"/>
+    <axis xyz="0 1 0"/>
 </joint>
 
 <joint name="right_wheel_base" type="continuous">
-    <origin xyz="-${chassis_core*0.5} -0.6 0" rpy="1.57 0 0"/>
+    <origin xyz="${chassis_core*0.9} -0.6 0" rpy="0 0 0"/>
     <parent link="base_link"/>
     <child link="right_wheel"/>
-    <axis xyz="0 0 1"/>
+    <axis xyz="0 1 0"/>
 </joint>
 
 <xacro:include filename="$(find diff_drive)/ddrive.gazebo.xacro"/>

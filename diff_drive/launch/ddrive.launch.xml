@@ -12,13 +12,18 @@
 
   <node pkg="ros_gz_bridge" exec="parameter_bridge" args="
         /model/diff_drive/odometery@nav_msgs/msg/Odometry[gz.msgs.Odometry
-        /world/asphalt_world/model/buttercup/joint_state@sensor_msgs/msg/JointState[gz.msgs.Model">
-    <remap from="/model/diff_drive/odometry" to="/odom"/>
+        /world/asphalt_world/model/buttercup/joint_state@sensor_msgs/msg/JointState[gz.msgs.Model
+        /cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist">
+    <remap from="/model/diff_drive/odometery" to="/odom"/>
     <remap from="/world/asphalt_world/model/buttercup/joint_state" to="/joint_states"/>
+    <!-- <remap from="/model/diff_drive/cmd_vel" to="/cmd_vel"/> -->
+
     
 
   </node>
 
-  <node pkg="ros_gz_sim" exec="create" args="-topic /robot_description -x 0.0 -z 0.3"/>
+  <node pkg="ros_gz_sim" exec="create" args="-topic /robot_description -x -4.0 -z 0.5"/>
+
+  <node pkg="diff_drive" exec="flip"/>
 
 </launch>

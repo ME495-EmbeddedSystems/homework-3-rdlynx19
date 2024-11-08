@@ -8,9 +8,9 @@ Panels:
         - /Status1
         - /Grid1
         - /RobotModel1
+        - /RobotModel1/Mass Properties1
         - /RobotModel1/Description Topic1
         - /Odometry1
-        - /Odometry1/Status1
         - /Odometry1/Topic1
       Splitter Ratio: 0.5
     Tree Height: 526
@@ -97,7 +97,7 @@ Visualization Manager:
           Show Trail: false
           Value: true
       Mass Properties:
-        Inertia: false
+        Inertia: true
         Mass: false
       Name: RobotModel
       TF Prefix: ""
@@ -111,13 +111,31 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        base_link:
+          Value: true
+        bottom_caster:
+          Value: true
+        left_wheel:
+          Value: true
+        right_wheel:
+          Value: true
+        top_caster:
+          Value: true
       Marker Scale: 1
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: false
       Tree:
-        {}
+        base_link:
+          bottom_caster:
+            {}
+          left_wheel:
+            {}
+          right_wheel:
+            {}
+          top_caster:
+            {}
       Update Interval: 0
       Value: true
     - Angle Tolerance: 0.10000000149011612
