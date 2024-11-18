@@ -43,7 +43,7 @@ class Flip(Node):
 
     
     def vel_tmr_callback(self):
-
+        """Timer publishing cmd_vel commands at 1Hz."""
         if self.pause is True:
             stop_vel = 0.0
             stop_twist = turtle_twist([stop_vel, 0.0, 0.0], [0.0, 0.0, 0.0])
