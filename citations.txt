@@ -1,2 +1,0 @@
-https://answers.ros.org/question/331432/pass-parameters-of-xacro-file-in-another-xacro-file/
-For including xacro file in another xacro file
