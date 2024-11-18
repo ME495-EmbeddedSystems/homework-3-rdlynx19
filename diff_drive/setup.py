@@ -22,7 +22,6 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml', 
                                    'launch/ddrive.launch.xml', 
-                                   'launch/ddrive.launch.py', 
                                    'launch/ddrive_rviz.launch.py', 
                                    'launch/ddrive_rviz.launch.xml', 
                                    'urdf/ddrive.urdf.xacro',

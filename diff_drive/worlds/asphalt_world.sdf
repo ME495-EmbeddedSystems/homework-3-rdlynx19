@@ -1,3 +1,4 @@
+<?xml version="1.8"?>
 <sdf version='1.10'>
   <world name='asphalt_world'>
     <physics name='1ms' type='ignored'>
@@ -89,11 +90,6 @@
       <name>asphalt_plane</name>
       <pose>0 0 0 0 0 0</pose>
     </include>
-    <!-- <include> 
-      <uri>model://ground_plane</uri>
-      <name>ground_plane</name>
-      <pose>0 0 0 0 0 0</pose>
-    </include> -->
     <include>
       <uri>model://jersey_barrier</uri>
       <name>Barrier1</name>
@@ -107,12 +103,12 @@
     <include>
       <uri>model://cardboard_box</uri>
       <name>Box 1</name>
-      <pose>6 -4 0.20000000000000001 0 0 0</pose>
+      <pose>6 -4 0.19999943493131048 2.2429695884440171e-20 -4.2736729125783397e-19 2.7928030463790295e-20</pose>
     </include>
     <include>
       <uri>model://cardboard_box</uri>
       <name>Box 2</name>
-      <pose>-6 4 0.20000000000000001 0 0 0</pose>
+      <pose>-6 4 0.19999943493131048 2.2429695884440171e-20 -4.2736729125783397e-19 2.7928030463790295e-20</pose>
     </include>
     <include>
       <uri>model://foldable_chair</uri>
@@ -122,7 +118,7 @@
     <include>
       <uri>model://elec_box</uri>
       <name>Spot</name>
-      <pose>-7 -7 0 -5.483676789063425e-33 -1.0476717590527946e-16 1.0468310788526447e-16</pose>
+      <pose>-7 -7 0 -5.4837100492748393e-33 -1.0476759942175309e-16 1.0468331964350128e-16</pose>
     </include>
     <light name='sun' type='directional'>
       <pose>0 0 10 0 0 0</pose>

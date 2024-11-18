@@ -11,10 +11,10 @@
 
 
   <node pkg="ros_gz_bridge" exec="parameter_bridge" args="
-        /model/diff_drive/odometery@nav_msgs/msg/Odometry[gz.msgs.Odometry
+        /model/diff_drive/odometry@nav_msgs/msg/Odometry[gz.msgs.Odometry
         /world/asphalt_world/model/buttercup/joint_state@sensor_msgs/msg/JointState[gz.msgs.Model
         /cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist">
-    <remap from="/model/diff_drive/odometery" to="/odom"/>
+    <remap from="/model/diff_drive/odometry" to="/odom"/>
     <remap from="/world/asphalt_world/model/buttercup/joint_state" to="/joint_states"/>
     <!-- <remap from="/model/diff_drive/cmd_vel" to="/cmd_vel"/> -->
 
