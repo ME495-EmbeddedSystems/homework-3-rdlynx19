@@ -1,7 +1,8 @@
+"""The Flip Node."""
+from geometry_msgs.msg import Twist, Vector3
+
 import rclpy
 from rclpy.node import Node
-
-from geometry_msgs.msg import Twist, Vector3
 
 
 def turtle_twist(linear_velocity, angular_velocity):
@@ -26,22 +27,23 @@ def turtle_twist(linear_velocity, angular_velocity):
         ),
     )
 
+
 class Flip(Node):
     """The Flip Node."""
 
     def __init__(self):
+        """Initialise timer, publisher and helper variables."""
         super().__init__('flip')
 
         self.vel_tmr = self.create_timer(1, self.vel_tmr_callback)
 
-        self.cmd_vel_publisher = self.create_publisher(Twist, "cmd_vel", 10)
+        self.cmd_vel_publisher = self.create_publisher(Twist, 'cmd_vel', 10)
 
         self.counter_var = 0
         self.sign_flag = 1
         self.pause = False
         self.pause_cntr = 0
 
-    
     def vel_tmr_callback(self):
         """Timer publishing cmd_vel commands at 1Hz."""
         if self.pause is True:
@@ -49,7 +51,7 @@ class Flip(Node):
             stop_twist = turtle_twist([stop_vel, 0.0, 0.0], [0.0, 0.0, 0.0])
             self.cmd_vel_publisher.publish(stop_twist)
             self.pause_cntr += 1
-            if(self.pause_cntr == 4):
+            if (self.pause_cntr == 4):
                 self.pause = False
                 self.pause_cntr = 0
         else:
@@ -58,19 +60,20 @@ class Flip(Node):
             self.cmd_vel_publisher.publish(forward_twist)
             self.counter_var += 1
 
-        if(self.counter_var == 3):
+        if (self.counter_var == 3):
             self.pause = True
             self.counter_var = 0
             self.sign_flag = -1 * self.sign_flag
-        
+
 
 def main(args=None):
+    """Spin the flip node."""
     rclpy.init(args=args)
-    flip=Flip()
+    flip = Flip()
     rclpy.spin(flip)
     flip.destroy_node()
     rclpy.shutdown()
 
+
 if __name__ == '__main__':
     main()
-
