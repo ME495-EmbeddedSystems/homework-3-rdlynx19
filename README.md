@@ -1,6 +1,7 @@
 # ME495 Embedded Systems Homework 3 (Part I)
 
 Author: Pushkar Dave
+
 This package simulates a differential drive robot and commands it to perform flips in Gazebo.
 
 ## QuickStart
